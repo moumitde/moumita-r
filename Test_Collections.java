@@ -1,200 +1,240 @@
-package com.May2023;
+package com.newTest;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
+import java.util.LinkedHashSet;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.ListIterator;
+import java.util.Map;
 import java.util.Set;
 
 public class Test_Collections 
 {
-	//Testing the "REMOVE" method
-	public void testRemoveMethod_List()
+	
+	
+	public void arrList()
 	{
 		ArrayList<Integer> arr = new ArrayList<>();
+		//List<Integer> arr2 = new ArrayList<>(10);
 		arr.add(1);
 		arr.add(2);
 		arr.add(3);
-		System.out.println("Before removing: "+arr);
 		
-		//below operation removes the index
-		/*Integer removedVal = arr.remove(1);
-		System.out.println("Removed index value: "+removedVal);
-		System.out.println("After removing: "+arr);*/
+		//removing the index
+		int val = arr.remove(2);
+		System.out.println(arr);
+		System.out.println(val);
 		
-		int index = arr.indexOf(5);
-		System.out.println(index);
+		//in order to remove the integer element, we need to typecast it
+		 boolean ll = arr.remove(Integer.valueOf(1));
+		
+		ArrayList<String> arr2 = new ArrayList<>();
+		//List<Integer> arr2 = new ArrayList<>(10);
+		arr2.add("a");
+		arr2.add("b");
+		arr2.add("c");
+		
+		String val2 = arr2.remove(0);
+		System.out.println("arr2: -"+arr2);
+		System.out.println("removed element:- "+val2);
+		
+		boolean val3 = arr2.remove("b");
+		System.out.println("return type after removing the object:- "+val3);
 		
 		
 		
-		//below operation removes the object
-		//boolean val = arr.remove(Integer.valueOf(1));
-		
-		//System.out.println("After removing: "+arr);
-		//System.out.println("return type of removing an element: "+val);
-		
-		//USING LAMBDAS for ITERATION
-		arr.forEach((a)->System.out.println("Iteration using Lambdas:- "+a));
-		
-		Integer var = Integer.valueOf(1);
-		int b = var.intValue();
-	
-	}
-	
-	public void testIterator_List()
-	{
-		//ITERATOR
-		List<Integer> list = new ArrayList<>();
-		list.add(1);
-		list.add(2);
-	    list.add(3);
-		
-		Iterator<Integer> it = list.iterator();
-		
-		/*while (it.hasNext())
-		{
-			System.out.println(it.next());
-		}*/
-		
-		//LISTITERATOR
-		
-		ListIterator<Integer> listIt = list.listIterator();
-		
-		while(listIt.hasPrevious())
-		{
-			System.out.println("Iterate through a list backwards:- "+listIt.previous());
-		}
-		
-	}
-	
-	public void testListMethods()
-	{
-		List<Integer> list = new ArrayList<>();
-		list.add(1);
-		list.add(2);
-		
-		System.out.println(list);
-		//Adding an element at a specified position
-		list.add(0, 53);
-		System.out.println("After adding an element at 0th position: "+list);
-		
-		//Altering an element
-        list.set(1, 93); 
-        System.out.println("After altering an element at 1st position: "+list);
 	}
 
-	public void testSetMethods()
+	public void linkList()
 	{
-	   Set<Integer> set = new HashSet<>() ;
-	   set.add(1);
-	   set.add(2);
-	   set.add(3);
-	   
-	   System.out.println(set);
-	   //Removing an object from any collection using "remove()" method returns a boolean value
-	   System.out.println(set.remove(1));
-	   System.out.println(set.remove(5));
-	   
-	  System.out.println(set.contains(5));
-	   
+		LinkedList<Integer> lin = new LinkedList<Integer>();
+		lin.add(1);
+		lin.add(2);
+		lin.add(3);
+		
+		lin.removeFirst();
+		lin.removeLast();
+		
+		System.out.println(lin);
+		
+		lin.remove(0);
+		System.out.println(lin);
+		
 	}
 	
-	public void testForEach_List()
+	public void set()
 	{
-		List<String> list = new ArrayList<>();
-		list.add("abc");
-		list.add("def");
+		//can add another collection like list/map to set constructor
+		/*
+		 * Map<Integer,String> map = new HashMap<>(); map.put(1, "a"); map.put(2, "b");
+		 */
 		
-		/*for(String str: list)
+		List<Integer> list = new ArrayList<>();
+		list.add(1);
+		list.add(2);
+		list.add(3);
+		
+		Set<Integer> set = new HashSet<>(list);
+		System.out.println(set);
+		
+		Collections.synchronizedList(list);
+		
+	}
+	
+	public void map()
+	{
+		Map<Integer,String> map= new HashMap<>();
+		map.put(1, null);
+		map.put(2, null);
+		map.put(3, null);
+		map.put(null, null);
+		map.put(5, "nil");
+		//string returned is the value being replaced
+	String val = map.put(5, "il");
+	String val2 = map.put(6, "nol");
+	String val3 = map.put(7, "nole");
+		
+		System.out.println(map);
+		System.out.println(val);
+		System.out.println("Print value for entry with 6 as a key:- "+val2);
+		System.out.println("Print value for entry with 6 as a key:- "+val3);
+	}
+	
+	//10th JUNE 2023
+	public static void test()
+	{
+		Set<Integer> set = new HashSet<>();
+		 int i = 'c';
+		 char ch = 26 ;
+	}
+	
+	public static void wrapperClass()
+	{
+		Integer i = 1 ;
+		String str = i.toString();
+		
+		Integer.toString(1);
+	}
+	
+	public static void convertSetofIntegerToStrings()
+	{
+		Set<Integer> set = new HashSet<>();
+		set.add(1);
+		set.add(2);
+		
+		Set<String> set2 = new HashSet<>();
+		
+		for(Integer i :set)
 		{
-			if(str.startsWith("a"))
-				list.add("ghi");
-		}*/
-		
-		ListIterator<String> iter = list.listIterator();
-		
-		while(iter.hasNext())
-		{
-			if(iter.next().startsWith("a"))
-			{
-				iter.add("ghi");
-			}
+			set2.add(i.toString());
 		}
 		
-		System.out.println(list);
+		System.out.println(set2);
 	}
 	
-	public void testList_String()
+	//11th JUNE 2023
+	public static void removeDuplicatesFromList1()
 	{
-		//Below List is Immutable and modifying this will throw UnsupportedOperationException
-		List<String> listString = Arrays.asList("a","b","c","d");
-		System.out.println(listString);
-		
-		listString.add("def");
-		System.out.println(listString);
+		//USING CONTAINS
+		List<String> list = new ArrayList<>(Arrays.asList("unix","unix","cobol","sql"));
+		List<String> newList = new ArrayList<>();
+		for(String s:list)
+		{
+			if(!newList.contains(s))
+				newList.add(s);
+		}
+		System.out.println(newList);
 	}
 	
-	public void testList_String2()
+	public static void removeDuplicatesFromList2()
 	{
-		List<String> listStr = new ArrayList<>();
-		listStr.add("abc");
-		listStr.add("def");
+		//USING LINKEDHASHSET
+		List<String> list = new ArrayList<>(Arrays.asList("unix","unix","cobol","sql"));
+		//Here LinkedHashSet is used to preserve the order of elements in the list
+		Set<String> set = new LinkedHashSet<>(list);
 		
-		System.out.println(listStr);
+		list.clear();
 		
-		System.out.println(listStr.remove(1));
-	}
-	
-	public void testList_SortMethod()
-	{
-		List<String> list = new ArrayList<>();
-		list.add("a");
-		list.add("e");
-		list.add("b");
-		
-		System.out.println(list);
-		Collections.sort(list);
-		
-		
+		list.addAll(set);
 		
 		System.out.println(list);
 		
 		
+	}
+	
+	public static void map_check()
+	{
+		HashMap<Integer, Boolean> map = new HashMap<>();
+		
+		Boolean y = map.put(1, true);
+		
+		//GET -> Returns the value associated with the particular key
+		Boolean val = map.get(1);
+		
+		HashMap<Integer, String> map2 = new HashMap<>();
+		
+		//PUT -> Returns the value associated with the same key if it exists in the map OR , returns NULL
+		//if the same key is not present in the map
+		String val2 = map2.put(1, "str");
+		
+		System.out.println(val2);
+	}
+	
+	//13th JUNE 2023
+	public static void convertListToArray()
+	{
+		//1st Method
+		List<String> list = new ArrayList<>(Arrays.asList("apple","mango","banana"));
+		int n = list.size();
+		
+		String str[] = new String[n];
+		
+		for(int i=0; i<n ;i++)
+		{
+			str[i]=list.get(i);
+		}
+		System.out.println("1st Method:- "+Arrays.toString(str));
+		
+		//2nd Method
+		String newArr[] = list.toArray(new String[0]);
+		System.out.println("2nd Method:- "+Arrays.toString(newArr));
+		
+		//3rd Method
+		String[] slist = list.stream().toArray(String[]::new);
+		System.out.println(Arrays.toString(slist));
 		
 	}
 	
-	public void test()
+	public static void test_finalList()
 	{
-	    Integer i = new Integer("1");
-	    
-	   // String str = new String(null);
-	    
-	    System.out.println(i.intValue());
-	    
-	    
+		List<String> newList = new ArrayList(Arrays.asList("apple","banana","kiwi"));
+		newList.add("mango");
+		System.out.println(newList);
 	}
+	
+	
+	
+	
 	
 	public static void main(String[] args) 
 	{
 		Test_Collections coll = new Test_Collections();
-	//	coll.test();
-	//	coll.testIterator();
-	//	coll.testListMethods();
+		//coll.linkList();
+		//coll.arrList();
 		
-	//	coll.testSetMethods();
+		//coll.map();
+		//convertSetofIntegerToStrings();
+		//removeDuplicatesFromList1();
+		//removeDuplicatesFromList2();
 		
-	//	coll.testRemoveMethod();
-	//	coll.testForEach_List();
+		//map_check();
 		
-	//	coll.testForEach_List();
-		
-	//	coll.testList_SortMethod();
-		
-		coll.test();
-		
+		//listToArray();
+		//addElementToArray();
+		test_finalList();
 		
 	}
 

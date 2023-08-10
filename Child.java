@@ -1,76 +1,37 @@
-package com.May2023;
+package com.newTest;
 
-public class Child extends Super implements Ival1
+public class Child extends Parent
 {
-	//int i=20 ;
-	protected void test()
+	//Child class constructor
+	/*
+	 * Child() { System.out.println("Child class constructor"); }
+	 */
+	
+	Child(String str)
 	{
-	   System.out.println("protected");	
+	  System.out.println("Child class constructor");	
 	}
 	
-	public void test1()
+	public void test()
 	{
-		str="def";
+		System.out.println("child");
 	}
 	
-	public void test2()
+	public void check()
 	{
-		System.out.println(this.str);
-		System.out.println(super.str);
+		System.out.println("check");
 	}
 	
-	public void testScope()
-	{
-		//int i=20 ;
-		for(int i=40 ; i<100 ; i++)
-		{
-			System.out.println(i);
-		}
-		int i=20 ;
-	}
+  public static void main(String[] args) 
+  {
+	//Parent p = new Parent();
+	  Child c = new Child("abc");
+	//  Parent p = new Child();
 	
-	
-	
-	public static void main(String[] args) 
-	{
-		Child c = new Child();
-		System.out.println(c.str);
-		c.test1();  //prints def
-		c.test2();  //prints def
-		System.out.println(c.str);  //prints def
-		
-		c.str = "ertu";
-		System.out.println(c.str); //prints ertu
-		
-		c.test5();
-		
-		c.test234();
-		
-	}
-
-}
-
-class Super
-{
-	String str= "abc";
-	
-	 void test()
-	{
-		System.out.println("default");
-	}
-	 
-	 //final method in the parent class cannot be overridden in the child class
-	 final void test5()
-	 {
-		 System.out.println("print test 5");
-	 }
-	 
-	 public void test234() {
-		 System.out.println("in super class");
-	 }
-}
-
-interface Ival1
-{
-	public void test234();
+	//  c.test();
+	  
+	//  p.test2();
+	  
+	  
+  }
 }
